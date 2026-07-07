@@ -33,4 +33,25 @@ footer{font-size:12px;letter-spacing:2px;opacity:.6}
 <script>
 let s=36;
 const rnd=()=>{s=Math.sin(s)*10000;return s-Math.floor(s);};
-const
+const P='50,3 93,26.5 93,73.5 50,97 7,73.5 7,26.5';
+let i=0;
+for(let r=0;r<7&&i<35;r++){
+ for(let c=0;c<9&&i<35;c++){
+  if(c>=3&&c<=5&&r>=1&&r<=5){continue;}
+  i++;
+  const size=(2.5+rnd()*rnd()*7).toFixed(1);
+  const left=(c*11.1+0.5+rnd()*3).toFixed(1);
+  const top=(r*14.3+0.5+rnd()*4).toFixed(1);
+  const kleur=rnd()>.5?'#C6A15B':'#173F35';
+  const op=(0.05+rnd()*0.05).toFixed(3);
+  const el=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  el.setAttribute('class','bg');
+  el.setAttribute('viewBox','0 0 100 100');
+  el.setAttribute('style','left:'+left+'vw;top:'+top+'vh;width:'+size+'vmin;height:'+size+'vmin');
+  el.innerHTML='<polygon points="'+P+'" fill="none" stroke="'+kleur+'" stroke-opacity="'+op+'" stroke-width="1.5"/>';
+  document.body.insertBefore(el,document.querySelector('main'));
+ }
+}
+</script>
+</body>
+</html>
